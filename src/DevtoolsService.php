@@ -86,7 +86,7 @@ class DevtoolsService
      */
     public function autoPreview($projectPath = '', $infoOutput = '')
     {
-        return $this->action('/autopreview', [
+        return $this->action('autopreview', [
             strtolower('infoOutput')  => $infoOutput,
             strtolower('projectPath') => $projectPath
         ]);
@@ -134,6 +134,18 @@ class DevtoolsService
      */
     private function getUrl($method)
     {
-        return "http://127.0.0.1/{$method}";
+        $port = $this->getPort();
+
+        return "http://127.0.0.1:{$port}/{$method}";
+    }
+
+    /**
+     * @return string
+     */
+    private function getPort()
+    {
+        $portPath = \Config::get('devtools_port_path');
+
+        return file_get_contents($portPath);
     }
 }
