@@ -144,8 +144,11 @@ class DevtoolsService
      */
     private function getPort()
     {
-        $portPath = \Config::get('devtools_port_path');
-
-        return file_get_contents($portPath);
+        try {
+            $port =  file_get_contents(\Config::get('devtools_port_path'));
+        } catch (\Exception $exception) {
+            $port = '';
+        }
+        return $port;
     }
 }

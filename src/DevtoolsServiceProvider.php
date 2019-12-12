@@ -29,7 +29,7 @@ class DevtoolsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../../Config/config.php';
+        $configPath = __DIR__ . '/Config/config.php';
 
         $this->publishes([$configPath => config_path('devtools.php')], 'config');
     }
