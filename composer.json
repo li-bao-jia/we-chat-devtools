@@ -1,0 +1,35 @@
+{
+    "name": "li-bao-jia/we-chat-devtools",
+    "description": "指示微信开发者工具进行登录、预览、上传等操作。",
+    "version": "1.0.0",
+    "keywords": [
+        "li-bao-jia",
+        "we-chat-devtools"
+    ],
+    "homepage": "https://github.com/li-bao-jia/we-chat-devtools",
+    "authors": [
+        {
+            "name": "BaoJia Li",
+            "email": "livsyitian@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ixudra/curl": "^6.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "BaoJiaLi\\WeChatDevtools\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BaoJiaLi\\WeChatDevtools\\DevtoolsServiceProvider"
+            ],
+            "aliases": {
+                "Devtools": "BaoJiaLi\\WeChatDevtools\\Facades\\Devtools"
+            }
+        }
+    }
+}
