@@ -23,6 +23,18 @@ class DevtoolsServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $configPath = __DIR__ . '/../../Config/config.php';
+
+        $this->publishes([$configPath => config_path('devtools.php')], 'config');
+    }
+
+    /**
      * Register the application services.
      *
      * @return void
@@ -33,7 +45,6 @@ class DevtoolsServiceProvider extends ServiceProvider
             return new DevtoolsService();
         });
     }
-
 
 
 }
