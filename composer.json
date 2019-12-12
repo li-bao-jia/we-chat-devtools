@@ -1,6 +1,6 @@
 {
     "name": "li-bao-jia/we-chat-devtools",
-    "description": "指示微信开发者工具进行登录、预览、上传等操作。",
+    "description": "Instruct WeChat devtools to perform operations such as login, preview, and upload.",
     "version": "1.0.0",
     "keywords": [
         "li-bao-jia",
