@@ -13,11 +13,14 @@
 namespace BaoJiaLi\WeChatDevtools\Facades;
 
 
+use BaoJiaLi\WeChatDevtools\DevtoolsService;
 use Illuminate\Support\Facades\Facade;
 
 class Devtools extends Facade
 {
     /**
+     * @see DevtoolsService
+     *
      * @return string
      */
     protected static function getFacadeAccessor()

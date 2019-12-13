@@ -8,6 +8,8 @@
  * @Date        2019/12/123:42 PM
  * @link        https://gitee.com/li-bao-jia
  */
+
+
 return [
 
     /*
@@ -19,20 +21,7 @@ return [
     |
     */
 
-    'applet_path' => '******',
-
-    /*
-    |--------------------------------------------------------------------------
-    | WeChat devtools installation path
-    |--------------------------------------------------------------------------
-    |
-    | macOS: <Installation Path>/Contents/MacOS/cli
-    |
-    | Windows: <Installation Path>/cli.bat
-    |
-    */
-
-    'devtools_path' => '******',
+    'applet_path' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +34,22 @@ return [
 
     */
 
-    'devtools_port_path' => '******',
+    'port_path' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | WeChat devtools default login qr code path
+    --------------------------------------------------------------------------
+    |
+    | Specify the file path and write the QR code data in the file
+    |
+    | If specified, the QR code will be written to the file in the specified path.
+    |
+    | If not specified, the QR code will be returned as the request response
+    |
+    */
+
+    'login_qr' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +62,20 @@ return [
     |
     */
 
-    'devtools_login_output' => '******',
+    'login_output' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | WeChat devtools upload info output path
+    --------------------------------------------------------------------------
+    |
+    | The extra information uploaded this time will be output to the specified path in json format
+    |
+    | Such as code package size and subpackage size information.
+    |
+    */
+
+    'upload_output' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -67,5 +84,5 @@ return [
     |
     */
 
-    'devtools_http_url' => 'http://127.0.0.1',
+    'http_url' => 'http://127.0.0.1',
 ];

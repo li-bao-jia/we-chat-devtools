@@ -13,142 +13,121 @@
 namespace BaoJiaLi\WeChatDevtools;
 
 
+use BaoJiaLi\WeChatDevtools\Operates\Login;
+use BaoJiaLi\WeChatDevtools\Operates\Modify;
+use BaoJiaLi\WeChatDevtools\Operates\Upload;
+
 class DevtoolsService
 {
-    /*
-     * 打开工具
+    /**
+     * @var Login
      */
-    public function open()
+    private $loginOperate;
+
+    /**
+     * @var Upload
+     */
+    private $uploadOperate;
+
+
+    public function __construct()
     {
-        return $this->action('open');
+        $this->loginOperate = new Login();
+        $this->uploadOperate = new Upload();
     }
 
     /*
-     * 打开指定项目
+     * Login Class | 登陆操作集合
+     * ------------------------------------------------------------------------------------------
      */
-    public function openProject($projectPath)
-    {
-        return $this->action('open', [strtolower('projectPath') => $projectPath]);
-    }
-
-    /*
-     * 登录
+    /**
+     * Login | 登录
+     *
+     * @param string $format
+     * @param string $qrOutput
+     * @param string $resultOutput
+     *
+     * @return mixed
      */
     public function login($format = 'image', $qrOutput = '', $resultOutput = '')
     {
-        return $this->action('login', [
-            strtolower('format')       => $format,
-            strtolower('qrOutput')     => $qrOutput,
-            strtolower('resultOutput') => $resultOutput
-        ]);
+        return $this->loginOperate->action($format = 'image', $qrOutput = '', $resultOutput = '');
     }
 
-    /*
-     * 预览
+    /**
+     * Login Qr code | 登录二维码
+     *
+     * @return string
      */
-    public function preview($projectPath = '', $format = '', $qrOutput = '', $infoOutput = '', $compileCondition = '')
+    public function LoginQrCode()
     {
-        return $this->action('preview', [
-            strtolower('format')           => $format,
-            strtolower('qrOutput')         => $qrOutput,
-            strtolower('infoOutput')       => $infoOutput,
-            strtolower('projectPath')      => $projectPath,
-            strtolower('compileCondition') => $compileCondition
-        ]);
+        return $this->loginOperate->qrCode();
+    }
+
+    /**
+     * Login result output | 登陆结果
+     *
+     * @return string
+     */
+    public function loginOutput()
+    {
+        return $this->loginOperate->output();
+    }
+
+    /**
+     * Remove login result output file
+     *
+     * @return bool
+     */
+    public function removeLoginOutput()
+    {
+        return $this->loginOperate->removeOutput();
     }
 
     /*
-     * 上传
+     * Modify Class | 修改小程序AppId
+     * ------------------------------------------------------------------------------------------
+     */
+    /**
+     * Modify WeChat Mini Program appId ｜ 修改微信小程序 appId
+     *
+     * @param string $appId
+     * @param string $projectPath
+     *
+     * @return bool
+     */
+    public function modify($appId, $projectPath = '')
+    {
+        return (new Modify())->action($appId, $projectPath);
+    }
+
+    /*
+     * Upload Class | 上传操作集合
+     * ------------------------------------------------------------------------------------------
+     */
+    /**
+     * Upload result output | 上传结果
+     *
+     * @param string $projectPath
+     * @param string $version
+     * @param string $desc
+     * @param string $infoOutput
+     *
+     * @return mixed
      */
     public function upload($projectPath = '', $version = '', $desc = '', $infoOutput = '')
     {
-        return $this->action('upload', [
-            strtolower('desc')        => $desc,
-            strtolower('version')     => $version,
-            strtolower('infoOutput')  => $infoOutput,
-            strtolower('projectPath') => $projectPath
-        ]);
-    }
-
-    /*
-     * 构建 npm
-     */
-    public function buildNpm($projectPath = '', $compileType = '')
-    {
-        return $this->action('buildnpm', [
-            strtolower('compileType') => $compileType,
-            strtolower('projectPath') => $projectPath
-        ]);
-    }
-
-    /*
-     * 自动预览
-     */
-    public function autoPreview($projectPath = '', $infoOutput = '')
-    {
-        return $this->action('autopreview', [
-            strtolower('infoOutput')  => $infoOutput,
-            strtolower('projectPath') => $projectPath
-        ]);
-    }
-
-    /*
-     * 关闭
-     */
-    public function close()
-    {
-        return $this->action('close');
-    }
-
-    /*
-     * 关闭指定项目窗口
-     */
-    public function closeProject($projectPath)
-    {
-        return $this->action('close', [strtolower('projectPath') => $projectPath]);
-    }
-
-    /*
-     * 关闭开发者工具
-     */
-    public function quit()
-    {
-        return $this->action('quit');
+        return $this->uploadOperate->action($projectPath, $version, $desc, $infoOutput);
     }
 
     /**
-     * @param string $method
-     * @param array $params
-     * @return mixed
-     */
-    private function action($method, $params = [])
-    {
-        $url = $this->getUrl($method);
-
-        return \Curl::to($url)->withData($params)->get();
-    }
-
-    /**
-     * @param string $method
+     * Upload info output | 上传包信息
+     *
      * @return string
      */
-    private function getUrl($method)
+    public function uploadOutput()
     {
-        $port = $this->getPort();
-
-        return "http://127.0.0.1:{$port}/{$method}";
+        return $this->uploadOperate->output();
     }
 
-    /**
-     * @return string
-     */
-    private function getPort()
-    {
-        try {
-            $port =  file_get_contents(\Config::get('devtools_port_path'));
-        } catch (\Exception $exception) {
-            $port = '';
-        }
-        return $port;
-    }
 }
