@@ -51,7 +51,7 @@ class DevtoolsService
      */
     public function login($format = 'image', $qrOutput = '', $resultOutput = '')
     {
-        return $this->loginOperate->action($format = 'image', $qrOutput = '', $resultOutput = '');
+        return $this->loginOperate->action($format = 'image', $qrOutput, $resultOutput);
     }
 
     /**
