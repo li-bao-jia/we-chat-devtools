@@ -49,7 +49,7 @@ return [
     |
     */
 
-    'login_qr' => '',
+    'login_qr' => storage_path('app/public/devtools/login_qr.png'),
 
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ return [
     |
     */
 
-    'login_output' => '',
+    'login_output' => storage_path('app/public/devtools/login_output.json'),
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ return [
     |
     */
 
-    'upload_output' => '',
+    'upload_output' => storage_path('app/public/devtools/upload_output.txt'),
 
     /*
     |--------------------------------------------------------------------------
