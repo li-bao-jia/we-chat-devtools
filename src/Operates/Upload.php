@@ -52,7 +52,7 @@ class Upload
     {
         $params = $this->params($projectPath, $version, $desc, $infoOutput);
 
-        return $this->send('open', $params);
+        return $this->send('upload', $params);
     }
 
     /**
