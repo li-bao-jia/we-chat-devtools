@@ -52,17 +52,15 @@ class Login
     {
         $params = $this->params($format, $qrOutput, $resultOutput);
 
-        return $this->send('open', $params);
-    }
+        $result = $this->send('login', $params);
 
-    /**
-     * Qr Code path
-     *
-     * @return string
-     */
-    public function qrCode()
-    {
-        return is_file($this->qrOutput) ? $this->qrOutput : '';
+        if ($result && $result == $this->qrOutput) {
+            return '{"code":0,"qr_code":"' . $this->qrOutput . '","status":"SUCCESS"}';
+        }
+        if (!$result) {
+            return '{"code":-1,"error":"Devtools does not open","status":"FAIL"}';
+        }
+        return $result;
     }
 
     /**
@@ -86,7 +84,7 @@ class Login
      */
     public function removeOutput()
     {
-        return unlink($this->resultOutput);
+        return unlink($this->qrOutput) && unlink($this->resultOutput);
     }
 
     /**
@@ -123,6 +121,10 @@ class Login
     private function setQrOutput($qrOutput)
     {
         $this->qrOutput = $qrOutput ?: $this->defaultQrPath();
+
+        $pathDir = substr($this->qrOutput, 0, strrpos($this->qrOutput, '/', -4));
+
+        $this->midirs($pathDir);
     }
 
     /**
@@ -131,6 +133,18 @@ class Login
     private function setResultOutput($resultOutput)
     {
         $this->resultOutput = $resultOutput ?: $this->defaultResultOutput();
+
+        $pathDir = substr($this->resultOutput, 0, strrpos($this->resultOutput, '/', -5));
+
+        $this->midirs($pathDir);
+    }
+
+    /**
+     * @param string $dirs
+     */
+    private function midirs($dirs)
+    {
+        !is_dir($dirs) && mkdir($dirs, 0755, true);
     }
 
     /**
