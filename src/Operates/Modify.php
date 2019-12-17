@@ -20,7 +20,7 @@ class Modify
     private $appId;
 
     /**
-     * @var bool
+     * @var string
      */
     private $projectPath;
 
@@ -61,7 +61,7 @@ class Modify
      */
     private function defaultProjectPath()
     {
-        return \Config::get('devtools.applet_path');
+        return \Config::get('devtools.applet_path') . '/project.config.json';
     }
 
     /**
@@ -86,6 +86,6 @@ class Modify
         } catch (\Exception $exception) {
             $result = false;
         }
-        return $result;
+        return $result ? '{"code":0,"message":"AppId changed successfully","status":"SUCCESS"}' : '{"code":-1,"error":"Failed to change AppId","status":"FAIL"}';
     }
 }
