@@ -16,6 +16,19 @@ namespace BaoJiaLi\WeChatDevtools\Facades;
 use BaoJiaLi\WeChatDevtools\DevtoolsService;
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * @method static login($format = 'image', $qrOutput = '', $resultOutput = '')
+ * @method static LoginQrCode()
+ * @method static loginOutput()
+ * @method static removeLoginOutput()
+ * @method static modify($appId, $projectPath = '')
+ * @method static upload($projectPath = '', $version = '', $desc = '', $infoOutput = '')
+ * @method static uploadOutput()
+ * @method static close($projectPath = '')
+ *
+ * Class Devtools
+ * @package BaoJiaLi\WeChatDevtools\Facades
+ */
 class Devtools extends Facade
 {
     /**

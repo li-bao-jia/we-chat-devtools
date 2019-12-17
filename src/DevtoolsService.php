@@ -13,6 +13,7 @@
 namespace BaoJiaLi\WeChatDevtools;
 
 
+use BaoJiaLi\WeChatDevtools\Operates\Close;
 use BaoJiaLi\WeChatDevtools\Operates\Login;
 use BaoJiaLi\WeChatDevtools\Operates\Modify;
 use BaoJiaLi\WeChatDevtools\Operates\Upload;
@@ -29,9 +30,15 @@ class DevtoolsService
      */
     private $uploadOperate;
 
+    /**
+     * @var Close
+     */
+    private $closeOperate;
+
 
     public function __construct()
     {
+        $this->closeOperate = new Close();
         $this->loginOperate = new Login();
         $this->uploadOperate = new Upload();
     }
@@ -47,7 +54,7 @@ class DevtoolsService
      * @param string $qrOutput
      * @param string $resultOutput
      *
-     * @return mixed
+     * @return string
      */
     public function login($format = 'image', $qrOutput = '', $resultOutput = '')
     {
@@ -130,4 +137,19 @@ class DevtoolsService
         return $this->uploadOperate->output();
     }
 
+    /*
+     * Close Class | 关闭操作集合
+     * ------------------------------------------------------------------------------------------
+     */
+    /**
+     * Close the current project window | 关闭当前项目窗口
+     *
+     * @param string $projectPath
+     *
+     * @return mixed
+     */
+    public function close($projectPath = '')
+    {
+        return $this->closeOperate->action($projectPath);
+    }
 }
