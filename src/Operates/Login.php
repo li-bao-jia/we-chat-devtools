@@ -64,27 +64,43 @@ class Login
     }
 
     /**
+     * @param string $resultOutput
+     *
      * @return string
      */
-    public function output()
+    public function output($resultOutput = '')
     {
+        $this->setResultOutput($resultOutput);
         try {
-            $content = file_get_contents($this->resultOutput);
+            $content = '{"code":0,"error":"Scanning results waiting, please try again later","status":"WAIT"}';
+            if (is_file($this->resultOutput)) {
+                $content = file_get_contents($this->resultOutput);
 
-            !$content && $content = '{"error":"File read error, check for file existence or file read permissions","status":"FAIL"}';
-
+                !$content && $content = '{"code":-1,"error":"File read error, check for file existence or file read permissions","status":"FAIL"}';
+            }
         } catch (\Exception $exception) {
-            $content = '{"error":"QR code expired, please try again","status":"Wait"}';
+
         }
         return $content;
     }
 
     /**
-     * @return bool
+     * @param string $qrOutput
+     * @param string $resultOutput
+     *
+     * @return string
      */
-    public function removeOutput()
+    public function removeOutput($qrOutput = '', $resultOutput = '')
     {
-        return unlink($this->qrOutput) && unlink($this->resultOutput);
+        $this->setQrOutput($qrOutput);
+        $this->setResultOutput($resultOutput);
+
+        $result = true;
+
+        is_file($this->qrOutput) && $result = unlink($this->qrOutput);
+        $result && is_file($this->resultOutput) && $result = unlink($this->resultOutput);
+
+        return $result ? '{"code":0,"message":"Remove login output successfully","status":"SUCCESS"}' : '{"code":-1,"error":"Failed to remove login output","status":"FAIL"}';
     }
 
     /**

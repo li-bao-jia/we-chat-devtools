@@ -28,13 +28,18 @@ class Close
      *
      * @param string $projectPath
      *
-     * @return mixed
+     * @return string
      */
     public function action($projectPath = '')
     {
         $this->setProjectPath($projectPath);
 
-        return $this->send('close', [strtolower('projectPath') => $this->projectPath]);
+        $result = $this->send('close', [strtolower('projectPath') => $this->projectPath]);
+
+        if ($result === false) {
+            return '{"code":-1,"error":"Incorrect closing operation","status":"FAIL"}';
+        }
+        return '{"code":0,"message":"Close operation succeeded","status":"SUCCESS"}';
     }
 
     /**

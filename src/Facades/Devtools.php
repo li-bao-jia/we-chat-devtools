@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static login($format = 'image', $qrOutput = '', $resultOutput = '')
- * @method static LoginQrCode()
- * @method static loginOutput()
- * @method static removeLoginOutput()
+ * @method static loginOutput($resultOutput = '')
+ * @method static removeLoginOutput($qrOutput = '', $resultOutput = '')
  * @method static modify($appId, $projectPath = '')
  * @method static upload($projectPath = '', $version = '', $desc = '', $infoOutput = '')
  * @method static uploadOutput()
+ * @method static removeUploadOutput($infoOutput = '')
  * @method static close($projectPath = '')
  *
  * Class Devtools

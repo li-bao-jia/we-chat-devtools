@@ -58,20 +58,41 @@ class Upload
     /**
      * Upload info output | 上传包信息输出
      *
+     * @param string $infoOutput
+     *
      * @return string
      */
-    public function output()
+    public function output($infoOutput = '')
     {
-        $error = '{"error":"File read error, check for file existence or file read permissions","status":"FAIL"}';
+        $this->setInfoOutput($infoOutput);
         try {
-            $content = file_get_contents($this->infoOutput);
+            $content = '{"code":0,"error":"Uploading results waiting, please try again later","status":"WAIT"}';
+            if (is_file($this->infoOutput)) {
+                $content = file_get_contents($this->infoOutput);
 
-            !$content && $content = $error;
+                !$content && $content = '{"code":-1,"error":"File read error, check for file existence or file read permissions","status":"FAIL"}';
+            }
 
         } catch (\Exception $exception) {
-            $content = $error;
+
         }
         return $content;
+    }
+
+    /**
+     * @param string $infoOutput
+     *
+     * @return string
+     */
+    public function removeOutput($infoOutput = '')
+    {
+        $this->setInfoOutput($infoOutput);
+
+        $result = true;
+
+        is_file($this->infoOutput) && $result = unlink($this->infoOutput);
+
+        return $result ? '{"code":0,"message":"Remove upload output successfully","status":"SUCCESS"}' : '{"code":-1,"error":"Failed to remove upload output","status":"FAIL"}';
     }
 
     /**

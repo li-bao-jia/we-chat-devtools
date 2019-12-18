@@ -62,27 +62,19 @@ class DevtoolsService
     }
 
     /**
-     * Login Qr code | 登录二维码
-     *
-     * @return string
-     */
-    public function LoginQrCode()
-    {
-        return $this->loginOperate->qrCode();
-    }
-
-    /**
      * Login result output | 登陆结果
      *
+     * @param string $resultOutput
+     *
      * @return string
      */
-    public function loginOutput()
+    public function loginOutput($resultOutput = '')
     {
         return $this->loginOperate->output();
     }
 
     /**
-     * Remove login result output file
+     * Remove login result output file | 移除登陆输出文件
      *
      * @return bool
      */
@@ -135,6 +127,18 @@ class DevtoolsService
     public function uploadOutput()
     {
         return $this->uploadOperate->output();
+    }
+
+    /**
+     * Remove upload result output file | 移除上传输出文件
+     *
+     * @param string $infoOutput
+     *
+     * @return string
+     */
+    public function removeUploadOutput($infoOutput = '')
+    {
+        return $this->uploadOperate->removeOutput($infoOutput);
     }
 
     /*

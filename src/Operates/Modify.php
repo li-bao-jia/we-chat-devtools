@@ -72,17 +72,17 @@ class Modify
         if (!$this->appId || !$this->projectPath) {
             return false;
         }
-
         $result = true;
         try {
             $content = file_get_contents($this->projectPath);
 
-            $content ? $content = json_decode($content, true) : $result = true;
+            $content ? $content = json_decode($content, true) : $result = false;
 
-            $content['appid'] = $this->appId;
+            if ($result) {
+                $content['appid'] = $this->appId;
 
-            $result && $result = !!file_put_contents($this->projectPath, json_encode($content, true));
-
+                $result = !!file_put_contents($this->projectPath, json_encode($content, true));
+            }
         } catch (\Exception $exception) {
             $result = false;
         }
