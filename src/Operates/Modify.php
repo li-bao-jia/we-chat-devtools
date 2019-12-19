@@ -22,19 +22,33 @@ class Modify
     /**
      * @var string
      */
+    private $version;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
     private $projectPath;
 
     /**
      * Modify WeChat Mini Program appId ｜ 修改微信小程序 appId
      *
      * @param string $appId
+     * @param string $version
+     * @param string $description
      * @param string $projectPath
      *
      * @return bool
      */
-    public function action($appId, $projectPath = '')
+    public function action($appId, $version = '', $description = '', $projectPath = '')
     {
         $this->setAppId($appId);
+        $this->setVersion($version);
+        $this->setDescription($description);
         $this->setProjectPath($projectPath);
 
         return $this->updateAppId();
@@ -46,6 +60,22 @@ class Modify
     private function setAppId($appId)
     {
         $this->appId = $appId;
+    }
+
+    /**
+     * @param string $version
+     */
+    private function setVersion($version)
+    {
+        $this->version = $version ?: '1.1.1';
+    }
+
+    /**
+     * @param string $description
+     */
+    private function setDescription($description)
+    {
+        $this->description = $description ?: '优化版本';
     }
 
     /**
@@ -80,6 +110,8 @@ class Modify
 
             if ($result) {
                 $content['appid'] = $this->appId;
+                $content['libVersion'] = $this->version;
+                $content['description'] = $this->description;
 
                 $result = !!file_put_contents($this->projectPath, json_encode($content, true));
             }

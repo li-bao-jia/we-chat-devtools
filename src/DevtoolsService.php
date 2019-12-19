@@ -91,13 +91,15 @@ class DevtoolsService
      * Modify WeChat Mini Program appId ｜ 修改微信小程序 appId
      *
      * @param string $appId
+     * @param string $version
+     * @param string $description
      * @param string $projectPath
      *
      * @return bool
      */
-    public function modify($appId, $projectPath = '')
+    public function modify($appId, $version ='', $description = '', $projectPath = '')
     {
-        return (new Modify())->action($appId, $projectPath);
+        return (new Modify())->action($appId, $version, $description, $projectPath);
     }
 
     /*
