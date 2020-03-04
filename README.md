@@ -11,7 +11,7 @@ Instruct WeChat devtools to perform operations such as login, preview, and uploa
 
 ## 安装
 
-    composer require li/amap
+    composer require li-bao-jia/we-chat-devtools
 
 ## 用法
 
