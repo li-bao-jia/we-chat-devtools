@@ -70,7 +70,7 @@ class DevtoolsService
      */
     public function loginOutput($resultOutput = '')
     {
-        return $this->loginOperate->output();
+        return $this->loginOperate->output($resultOutput);
     }
 
     /**
