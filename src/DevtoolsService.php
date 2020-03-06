@@ -76,11 +76,14 @@ class DevtoolsService
     /**
      * Remove login result output file | 移除登陆输出文件
      *
-     * @return bool
+     * @param string $qrOutput
+     * @param string $resultOutput
+     *
+     * @return string
      */
-    public function removeLoginOutput()
+    public function removeLoginOutput($qrOutput = '', $resultOutput = '')
     {
-        return $this->loginOperate->removeOutput();
+        return $this->loginOperate->removeOutput($qrOutput, $resultOutput);
     }
 
     /*
@@ -124,11 +127,13 @@ class DevtoolsService
     /**
      * Upload info output | 上传包信息
      *
+     * @param string $infoOutput
+     *
      * @return string
      */
-    public function uploadOutput()
+    public function uploadOutput($infoOutput = '')
     {
-        return $this->uploadOperate->output();
+        return $this->uploadOperate->output($infoOutput);
     }
 
     /**
