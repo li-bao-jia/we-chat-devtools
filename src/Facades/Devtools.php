@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static removeLoginOutput($qrOutput = '', $resultOutput = '')
  * @method static modify($appId, $version ='', $description = '', $projectPath = '')
  * @method static upload($projectPath = '', $version = '', $desc = '', $infoOutput = '')
- * @method static uploadOutput()
+ * @method static uploadOutput($infoOutput = '')
  * @method static removeUploadOutput($infoOutput = '')
  * @method static close($projectPath = '')
  *
