@@ -139,7 +139,7 @@ class Upload
      */
     private function setDesc($desc)
     {
-        $this->desc = !$desc ? $desc : '';
+        $this->desc = $desc ? $desc : '';
     }
 
     /**
