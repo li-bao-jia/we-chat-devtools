@@ -55,10 +55,10 @@ class Login
         $result = $this->send('login', $params);
 
         if ($result && $result == $this->qrOutput) {
-            return '{"code":0,"qr_code":"' . $this->qrOutput . '","status":"SUCCESS"}';
+            return json_encode(['code' => 0, 'qr_code' => $this->qrOutput, 'status' => 'SUCCESS']);
         }
         if (!$result) {
-            return '{"code":-1,"error":"Devtools does not open","status":"FAIL"}';
+            return json_encode(['code' => -1, 'error' => 'Devtools does not open', 'status' => 'FAIL']);
         }
         return $result;
     }
