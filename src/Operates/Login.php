@@ -138,7 +138,7 @@ class Login
     {
         $this->qrOutput = $qrOutput ?: $this->defaultQrPath();
 
-        $pathDir = substr($this->qrOutput, 0, strrpos($this->qrOutput, '/', -4));
+        $pathDir = substr($this->qrOutput, 0, strrpos($this->qrOutput, DIRECTORY_SEPARATOR, -4));
 
         $this->midirs($pathDir);
     }
@@ -150,7 +150,7 @@ class Login
     {
         $this->resultOutput = $resultOutput ?: $this->defaultResultOutput();
 
-        $pathDir = substr($this->resultOutput, 0, strrpos($this->resultOutput, '/', -5));
+        $pathDir = substr($this->resultOutput, 0, strrpos($this->resultOutput, DIRECTORY_SEPARATOR, -5));
 
         $this->midirs($pathDir);
     }
