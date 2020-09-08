@@ -14,8 +14,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | 微信小程序项目路径
+    |
     | WeChat applet project path
     |--------------------------------------------------------------------------
+    |
+    | 存储微信小程序代码的绝对路径
     |
     | Store WeChat Applet Code Path
     |
@@ -25,12 +29,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | 微信开发者工具端口号文件位置绝对路径
+    |
     | WeChat devtools port number file location
     |--------------------------------------------------------------------------
     |
-    | macOS : ~/Library/Application Support/微信开发者工具/Default/.ide
+    | macOS : ~/Library/Application Support/微信开发者工具/<开发者工具安装路径的MD5>/Default/.ide
     |
-    | Windows : ~/AppData/Local/微信开发者工具/User Data/Default/.ide
+    | Windows : ~/AppData/Local/微信开发者工具/User Data/<开发者工具安装路径的MD5>/Default/.ide
 
     */
 
