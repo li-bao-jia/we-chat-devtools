@@ -1,5 +1,7 @@
 # we-chat-devtools
-# 微信开发者工具小程序上传封装SDK
+# 微信开发者工具小程序上传封装SDK（PHP）
+
+指示微信开发工具进行登录、预览、上传等操作。
 
 Instruct WeChat devtools to perform operations such as login, preview, and upload.
 
