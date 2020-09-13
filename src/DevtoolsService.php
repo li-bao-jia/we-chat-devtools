@@ -16,14 +16,26 @@ namespace BaoJiaLi\WeChatDevtools;
 use BaoJiaLi\WeChatDevtools\Operates\Close;
 use BaoJiaLi\WeChatDevtools\Operates\Login;
 use BaoJiaLi\WeChatDevtools\Operates\Modify;
+use BaoJiaLi\WeChatDevtools\Operates\Open;
+use BaoJiaLi\WeChatDevtools\Operates\Output;
 use BaoJiaLi\WeChatDevtools\Operates\Upload;
 
 class DevtoolsService
 {
     /**
+     * @var Open
+     */
+    private $openOperate;
+
+    /**
      * @var Login
      */
     private $loginOperate;
+
+    /**
+     * @var Modify
+     */
+    private $modifyOperate;
 
     /**
      * @var Upload
@@ -35,123 +47,68 @@ class DevtoolsService
      */
     private $closeOperate;
 
-
-    public function __construct()
-    {
-        $this->closeOperate = new Close();
-        $this->loginOperate = new Login();
-        $this->uploadOperate = new Upload();
-    }
-
-    /*
-     * Login Class | 登陆操作集合
-     * ------------------------------------------------------------------------------------------
-     */
     /**
-     * Login | 登录
+     * 启动 | open
      *
-     * @param string $format
-     * @param string $qrOutput
-     * @param string $resultOutput
-     *
-     * @return string
+     * @return Open
      */
-    public function login($format = 'image', $qrOutput = '', $resultOutput = '')
+    public function open()
     {
-        return $this->loginOperate->action($format = 'image', $qrOutput, $resultOutput);
+        !isset($this->openOperate) && $this->openOperate = new Open();
+
+        return $this->openOperate;
     }
 
     /**
-     * Login result output | 登陆结果
+     * 登录 | Login
      *
-     * @param string $resultOutput
-     *
-     * @return string
+     * @return Login
      */
-    public function loginOutput($resultOutput = '')
+    public function login()
     {
-        return $this->loginOperate->output($resultOutput);
+        !isset($this->loginOperate) && $this->loginOperate = new Login();
+
+        return $this->loginOperate;
     }
 
     /**
-     * Remove login result output file | 移除登陆输出文件
+     * 修改微信小程序 appId ｜ Modify WeChat Mini Program appId
      *
-     * @param string $qrOutput
-     * @param string $resultOutput
-     *
-     * @return string
+     * @return Modify
      */
-    public function removeLoginOutput($qrOutput = '', $resultOutput = '')
+    public function modify()
     {
-        return $this->loginOperate->removeOutput($qrOutput, $resultOutput);
-    }
+        !isset($this->modifyOperate) && $this->modifyOperate = new Modify();
 
-    /*
-     * Modify Class | 修改小程序AppId
-     * ------------------------------------------------------------------------------------------
-     */
-    /**
-     * Modify WeChat Mini Program appId ｜ 修改微信小程序 appId
-     *
-     * @param string $appId
-     * @param string $version
-     * @param string $description
-     * @param string $projectPath
-     *
-     * @return bool
-     */
-    public function modify($appId, $version ='', $description = '', $projectPath = '')
-    {
-        return (new Modify())->action($appId, $version, $description, $projectPath);
-    }
-
-    /*
-     * Upload Class | 上传操作集合
-     * ------------------------------------------------------------------------------------------
-     */
-    /**
-     * Upload result output | 上传结果
-     *
-     * @param string $projectPath
-     * @param string $version
-     * @param string $desc
-     * @param string $infoOutput
-     *
-     * @return mixed
-     */
-    public function upload($projectPath = '', $version = '', $desc = '', $infoOutput = '')
-    {
-        return $this->uploadOperate->action($projectPath, $version, $desc, $infoOutput);
+        return $this->modifyOperate;
     }
 
     /**
-     * Upload info output | 上传包信息
+     * 上传结果 | Upload result output
+     *
+     * @return Upload
+     */
+    public function upload()
+    {
+        !isset($this->uploadOperate) && $this->uploadOperate = new Upload();
+
+        return $this->uploadOperate;
+    }
+
+    /**
+     * 读取路径文件，输出文件内容 | Info output
      *
      * @param string $infoOutput
      *
      * @return string
      */
-    public function uploadOutput($infoOutput = '')
+    public function output($infoOutput = '')
     {
-        return $this->uploadOperate->output($infoOutput);
+        !isset($this->output) && $this->output = new Output();
+
+        return $this->output;
     }
 
-    /**
-     * Remove upload result output file | 移除上传输出文件
-     *
-     * @param string $infoOutput
-     *
-     * @return string
-     */
-    public function removeUploadOutput($infoOutput = '')
-    {
-        return $this->uploadOperate->removeOutput($infoOutput);
-    }
-
-    /*
-     * Close Class | 关闭操作集合
-     * ------------------------------------------------------------------------------------------
-     */
     /**
      * Close the current project window | 关闭当前项目窗口
      *
@@ -159,8 +116,10 @@ class DevtoolsService
      *
      * @return mixed
      */
-    public function close($projectPath = '')
+    public function close()
     {
-        return $this->closeOperate->action($projectPath);
+        !isset($this->closeOperate) && $this->closeOperate = new Close();
+
+        return $this->closeOperate;
     }
 }

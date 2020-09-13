@@ -14,17 +14,23 @@ namespace BaoJiaLi\WeChatDevtools\Facades;
 
 
 use BaoJiaLi\WeChatDevtools\DevtoolsService;
+use BaoJiaLi\WeChatDevtools\Operates\Close;
+use BaoJiaLi\WeChatDevtools\Operates\Login;
+use BaoJiaLi\WeChatDevtools\Operates\LoginOutput;
+use BaoJiaLi\WeChatDevtools\Operates\Modify;
+use BaoJiaLi\WeChatDevtools\Operates\Open;
+use BaoJiaLi\WeChatDevtools\Operates\Output;
+use BaoJiaLi\WeChatDevtools\Operates\Upload;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static login($format = 'image', $qrOutput = '', $resultOutput = '')
- * @method static loginOutput($resultOutput = '')
- * @method static removeLoginOutput($qrOutput = '', $resultOutput = '')
- * @method static modify($appId, $version ='', $description = '', $projectPath = '')
- * @method static upload($projectPath = '', $version = '', $desc = '', $infoOutput = '')
- * @method static uploadOutput($infoOutput = '')
- * @method static removeUploadOutput($infoOutput = '')
- * @method static close($projectPath = '')
+ * @method Open open()
+ * @method Close close()
+ * @method Login login()
+ * @method Modify modify()
+ * @method Upload upload()
+ * @method Output output()
+ *
  *
  * Class Devtools
  * @package BaoJiaLi\WeChatDevtools\Facades

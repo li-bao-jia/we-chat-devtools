@@ -14,48 +14,26 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | 微信小程序项目路径
-    |
-    | WeChat applet project path
+    | WeChat devtools default http url
     |--------------------------------------------------------------------------
-    |
-    | 存储微信小程序代码的绝对路径
-    |
-    | Store WeChat Applet Code Path
-    |
     */
 
-    'applet_path' => '',
+    'http_url' => 'http://127.0.0.1',
 
     /*
     |--------------------------------------------------------------------------
-    | 微信开发者工具端口号文件位置绝对路径
-    |
-    | WeChat devtools port number file location
+    | 微信开发者工具安装路径
     |--------------------------------------------------------------------------
     |
-    | macOS : ~/Library/Application Support/微信开发者工具/<开发者工具安装路径的MD5>/Default/.ide
+    | 例：(todo 用来运算"<开发者工具安装路径的MD5>"，暂未使用)
     |
-    | Windows : ~/AppData/Local/微信开发者工具/User Data/<开发者工具安装路径的MD5>/Default/.ide
-
-    */
-
-    'port_path' => '',
-
-    /*
-    |--------------------------------------------------------------------------
-    | WeChat devtools default login qr code path
-    --------------------------------------------------------------------------
+    | macOS: /Applications/wechatwebdevtools.app/Contents/MacOS
     |
-    | Specify the file path and write the QR code data in the file
-    |
-    | If specified, the QR code will be written to the file in the specified path.
-    |
-    | If not specified, the QR code will be returned as the request response
+    | Windows: C:\Program Files (x86)\Tencent\微信web开发者工具
     |
     */
 
-    'login_qr' => storage_path('app/public/devtools/login_qr.png'),
+    'install_path' => env('DEVTOOLS_INSTALL_PATH', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -68,27 +46,32 @@ return [
     |
     */
 
-    'login_output' => storage_path('app/public/devtools/login_output.json'),
+    'output_path' => env('DEVTOOLS_OUTPUT_PATH', ''),
 
     /*
     |--------------------------------------------------------------------------
-    | WeChat devtools upload info output path
-    --------------------------------------------------------------------------
+    | 微信小程序项目路径
+    |--------------------------------------------------------------------------
     |
-    | The extra information uploaded this time will be output to the specified path in json format
+    | 存储微信小程序代码的绝对路径
     |
-    | Such as code package size and subpackage size information.
+    | Store WeChat Applet Code Path
     |
     */
 
-    'upload_output' => storage_path('app/public/devtools/upload_output.txt'),
+    'applet_path' => env('DEVTOOLS_APPLET_PATH', []),
 
     /*
     |--------------------------------------------------------------------------
-    | WeChat devtools default http url
+    | 微信开发者工具端口号文件位置绝对路径
+    |
+    | WeChat devtools port number file location
     |--------------------------------------------------------------------------
     |
+    | macOS : ~/Library/Application Support/微信开发者工具
+    |
+    | Windows : ~/AppData/Local/微信开发者工具/User Data
     */
 
-    'http_url' => 'http://127.0.0.1',
+    'port_path' => env('DEVTOOLS_PORT_PATH', ''),
 ];

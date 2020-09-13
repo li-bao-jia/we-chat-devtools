@@ -13,48 +13,29 @@ namespace BaoJiaLi\WeChatDevtools\Operates;
 
 
 use BaoJiaLi\WeChatDevtools\Traits\CurlTrait;
+use BaoJiaLi\WeChatDevtools\Traits\ProjectPathTrait;
 
-class Close
+class Close implements IOperate
 {
-    use CurlTrait;
+    use ProjectPathTrait, CurlTrait;
 
     /**
-     * @var string
-     */
-    private $projectPath;
-
-    /**
-     * Close the current project window | 关闭当前项目窗口
+     * 关闭当前项目窗口 | Close the current project window
      *
      * @param string $projectPath
      *
      * @return string
      */
-    public function action($projectPath = '')
+    public function action()
     {
-        $this->setProjectPath($projectPath);
-
+        if (!$this->projectPath) {
+            return '{"code":-1,"error":"Project Path cannot be empty","status":"FAIL"}';
+        }
         $result = $this->send('close', [strtolower('projectPath') => $this->projectPath]);
 
         if ($result === false) {
             return '{"code":-1,"error":"Incorrect closing operation","status":"FAIL"}';
         }
         return '{"code":0,"message":"Close operation succeeded","status":"SUCCESS"}';
-    }
-
-    /**
-     * @param string $projectPath
-     */
-    private function setProjectPath($projectPath)
-    {
-        $this->projectPath = $projectPath ?: $this->defaultProjectPath();
-    }
-
-    /**
-     * @return string
-     */
-    private function defaultProjectPath()
-    {
-        return \Config::get('devtools.applet_path');
     }
 }

@@ -36,7 +36,7 @@ trait CurlTrait
     {
         $port = $this->getPort();
 
-        return "http://127.0.0.1:{$port}/{$method}";
+        return "http://127.0.0.1:{$port}/v2/{$method}";
     }
 
     /**

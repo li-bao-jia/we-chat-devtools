@@ -12,109 +12,59 @@
 namespace BaoJiaLi\WeChatDevtools\Operates;
 
 
+use BaoJiaLi\WeChatDevtools\Traits\ProjectPathTrait;
+
 class Modify
 {
+    use ProjectPathTrait;
+
     /**
      * @var string
      */
     private $appId;
 
     /**
-     * @var string
-     */
-    private $version;
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    /**
-     * @var string
-     */
-    private $projectPath;
-
-    /**
-     * Modify WeChat Mini Program appId ｜ 修改微信小程序 appId
-     *
-     * @param string $appId
-     * @param string $version
-     * @param string $description
-     * @param string $projectPath
+     * 修改微信小程序 appId ｜ Modify WeChat Mini Program appId
      *
      * @return bool
      */
-    public function action($appId, $version = '', $description = '', $projectPath = '')
+    public function action()
     {
-        $this->setAppId($appId);
-        $this->setVersion($version);
-        $this->setDescription($description);
-        $this->setProjectPath($projectPath);
-
         return $this->updateAppId();
     }
 
     /**
      * @param string $appId
+     *
+     * @return Modify
      */
-    private function setAppId($appId)
+    public function setAppId($appId)
     {
         $this->appId = $appId;
-    }
 
-    /**
-     * @param string $version
-     */
-    private function setVersion($version)
-    {
-        $this->version = $version ?: '1.1.1';
-    }
-
-    /**
-     * @param string $description
-     */
-    private function setDescription($description)
-    {
-        $this->description = $description ?: '优化版本';
-    }
-
-    /**
-     * @param string $projectPath
-     */
-    private function setProjectPath($projectPath)
-    {
-        $this->projectPath = $projectPath ?: $this->defaultProjectPath();
+        return $this;
     }
 
     /**
      * @return string
      */
-    private function defaultProjectPath()
-    {
-        return \Config::get('devtools.applet_path') . '/project.config.json';
-    }
-
-    /**
-     * @return bool
-     */
     private function updateAppId()
     {
-        if (!$this->appId || !$this->projectPath) {
-            return false;
+        if (!$this->appId) {
+            return '{"code":-1,"error":"App Id cannot be empty","status":"FAIL"}';
         }
-        $result = true;
+        if (!$this->projectPath) {
+            return '{"code":-1,"error":"Project Path cannot be empty","status":"FAIL"}';
+        }
         try {
             $content = file_get_contents($this->projectPath);
 
             $content ? $content = json_decode($content, true) : $result = false;
 
-            if ($result) {
-                $content['appid'] = $this->appId;
-                $content['libVersion'] = $this->version;
-                $content['description'] = $this->description;
+            $content['appid'] = $this->appId;
 
-                $result = !!file_put_contents($this->projectPath, json_encode($content, true));
-            }
+            $result = !!file_put_contents($this->projectPath, json_encode($content, true));
+
         } catch (\Exception $exception) {
             $result = false;
         }
