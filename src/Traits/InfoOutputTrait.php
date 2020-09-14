@@ -128,7 +128,23 @@ trait InfoOutputTrait
      */
     private function createInfoOutputPath($dirs)
     {
-        !is_dir($dirs) && mkdir($dirs, 0755, true);
+        !is_dir($dirs) && $this->mkdir_r($dirs, 0755);
+    }
+
+    /**
+     * 兼容 window 服务器不能递归创建目录
+     *
+     * @param $dirName
+     * @param int $rights
+     */
+    private function mkdir_r($dirName, $rights = 0777)
+    {
+        $dirs = explode(DIRECTORY_SEPARATOR, $dirName);
+        $dir = '';
+        foreach ($dirs as $part) {
+            $dir .= $part . DIRECTORY_SEPARATOR;
+            if (!is_dir($dir) && strlen($dir) > 0) mkdir($dir, $rights);
+        }
     }
 
     /**
