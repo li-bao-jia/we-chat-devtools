@@ -31,6 +31,7 @@ trait InfoOutputTrait
      */
     public function setInfoOutputFile($infoOutput = '', $remove = false)
     {
+        $this->remove = (bool)$remove;
         $this->infoOutput = $this->validateInfoOutput($infoOutput);
 
         return $this;

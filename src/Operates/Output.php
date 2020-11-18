@@ -29,21 +29,23 @@ class Output implements IOperate
                 $content = file_get_contents($this->infoOutput);
                 if ($content) {
                     $result = json_decode($content, true);
-                    if (isset($result['status']) && $result['status'] == 'SUCCESS' && $this->remove == true) {
-                        $this->removeOutput();
-                    }
+                    //二维码登录输出返回 status == SUCCESS  上传输出返回 size 包信息
+                    if (isset($result['size'])) $content = '{"code":0,"status":"SUCCESS"}';
                 }
                 !$content && $content = '{"code":-1,"error":"File read error, check for file existence or file read permissions","status":"FAIL"}';
             }
+            if ($this->remove == true) $this->removeOutput();
         } catch (\Exception $exception) {
 
         }
         return $content;
     }
 
+    /**
+     * 如果标记删除，删除输出文件
+     */
     private function removeOutput()
     {
-        is_file($this->infoOutput) && $result = unlink($this->infoOutput);
-//        return $result ? '{"code":0,"message":"Remove output successfully","status":"SUCCESS"}' : '{"code":-1,"error":"Failed to remove output","status":"FAIL"}';
+        is_file($this->infoOutput) && unlink($this->infoOutput);
     }
 }
