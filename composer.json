@@ -1,13 +1,13 @@
 {
-    "name": "li-bao-jia/we-chat-devtools",
+    "name": "li-bao-jia/we-chat-devtool",
     "description": "Instruct WeChat devtools to perform operations such as login, preview, and upload.",
     "version": "1.0.0",
     "keywords": [
         "li-bao-jia",
-        "we-chat-devtools"
+        "we-chat-devtool"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/li-bao-jia/we-chat-devtools",
+    "homepage": "https://github.com/li-bao-jia/we-chat-devtool",
     "authors": [
         {
             "name": "BaoJia Li",
@@ -15,22 +15,13 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "ixudra/curl": "^6.8"
+        "php": ">=7.0.0",
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
-            "BaoJiaLi\\WeChatDevtools\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "BaoJiaLi\\WeChatDevtools\\DevtoolsServiceProvider"
-            ],
-            "aliases": {
-                "Devtools": "BaoJiaLi\\WeChatDevtools\\Facades\\Devtools"
-            }
+            "BaoJiaLi\\WeChatDevtool\\": "src/"
         }
     }
 }
