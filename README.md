@@ -40,7 +40,7 @@ PHP 开发环境下，开发者可以通 HTTP 请求指示工具进行登录、�
 
         (new Devtool(['port' => $port]))->setMethod('login')->setParameters($parameters)->response()
 
-    3、如果你不会获取端口号，程序会会根据参数自动获取
+    3、如果你想自动获取端口号，可以这样
 
         3.1、你需要提供你的安装路径 install_path、端口前缀 port_path_prefix、端口后缀 port_path_suffix，如下：
 
