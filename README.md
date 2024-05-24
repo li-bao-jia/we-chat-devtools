@@ -1,4 +1,4 @@
-# we-chat-devtool
+# we-chat-devtools
 
 ### 微信开发者工具小程序上传封装SDK（PHP）
 
@@ -10,16 +10,16 @@ PHP 开发环境下，开发者可以通 HTTP 请求指示工具进行登录、�
 
 ## 安装
 
-> 通过 Composer 安装 we-chat-devtool
+> 通过 Composer 安装 we-chat-devtools
 
 1.项目目录下执行
 
-    composer require li-bao-jia/we-chat-devtool
+    composer require li-bao-jia/we-chat-devtools
 
 2.或编辑 composer.json 文件安装
 
     "require": {
-        "li-bao-jia/we-chat-devtool": "*"
+        "li-bao-jia/we-chat-devtools": "*"
     }
 
 ## 用法
