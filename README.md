@@ -1,4 +1,18 @@
-# we-chat-devtools
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+  <p>WeChat Devtools</p>
+  <p>提供微信小程序上传、预览、构建等服务</p>
+</div>
+
+<p align="center">
+<a href="https://github.com/li-bao-jia"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/li-bao-jia"><img src="https://img.shields.io/packagist/dt/li-bao-jia/we-chat-devtools" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/li-bao-jia/we-chat-devtools" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/li-bao-jia/we-chat-devtools" alt="License"></a>
+</p>
+
+### 描述 we-chat-devtools
+-
+
 
 ### 微信开发者工具小程序上传封装SDK（PHP）
 
@@ -86,8 +100,11 @@ PHP 开发环境下，开发者可以通 HTTP 请求指示工具进行登录、�
 这个软件包是根据 [MIT许可证](http://opensource.org/licenses/MIT) 授权的开源软件
 
 ## 说明
+- [1.0.0](https://github.com/li-bao-jia/we-chat-devtools/releases/tag/1.0.0) 版本完全
+- [2.0.2](https://github.com/li-bao-jia/we-chat-devtools/releases/tag/2.0.2)
 
-坚持做一个快乐的开发者
+- 
+- 坚持做一个快乐的开发者
 
 ## 计划
 
