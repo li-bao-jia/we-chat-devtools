@@ -1,13 +1,21 @@
-<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-  <p>WeChat Devtools</p>
-  <p>提供微信小程序上传、预览、构建等服务</p>
+<div align=center>
+    <p>WeChat Devtools</p>
+    <p>提供微信小程序上传、预览、构建等服务</p>
 </div>
 
 <p align="center">
-<a href="https://github.com/li-bao-jia"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/li-bao-jia"><img src="https://img.shields.io/packagist/dt/li-bao-jia/we-chat-devtools" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/li-bao-jia/we-chat-devtools" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/li-bao-jia/we-chat-devtools" alt="License"></a>
+    <a href="https://github.com/li-bao-jia">
+        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://packagist.org/packages/li-bao-jia">
+        <img src="https://img.shields.io/packagist/dt/li-bao-jia/we-chat-devtools" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/li-bao-jia">
+        <img src="https://img.shields.io/packagist/v/li-bao-jia/we-chat-devtools" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/li-bao-jia">
+        <img src="https://img.shields.io/packagist/l/li-bao-jia/we-chat-devtools" alt="License">
+    </a>
 </p>
 
 ### 描述 we-chat-devtools
@@ -120,5 +128,7 @@ PHP 开发环境下，开发者可以通 HTTP 请求指示工具进行登录、�
 - DEVELOPER: BaoJia Li
 
 - QQ: 751818588
+
+- QQ群: 232185834
 
 - EMAIL: livsyitian@163.com
