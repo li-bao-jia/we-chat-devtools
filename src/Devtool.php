@@ -21,6 +21,14 @@ class Devtool
     /**
      * 开发者工具基础参数
      *
+     * @param string $port 端口号
+     * @param string $method 请求方法
+     * @param string $version 版本号
+     * @param string $http_url HTTP 请求 url
+     * @param string $install_path 开发者工具安装路径
+     * @param string $port_path_prefix 端口文件路径前缀
+     * @param string $port_path_suffix 端口文件路径后缀
+     *
      * @var array
      */
     private $config = [
